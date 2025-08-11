@@ -110,18 +110,20 @@ ORDER BY s.total_sales DESC;
 ```
 Output:
 ```
-sales_id | product_name | customer_name
----------+--------------+---------------
-3        | Laptop       | John Doe
-1        | Phone        | John Doe
-5        | Tablet       | Jane Smith
-4        | Monitor      | Jane Smith
-2        | Keyboard     | Jane Smith
-7        | Mouse        | Michael Brown
-8        | Headphones   | Michael Brown
-6        | Webcam       | Michael Brown
-9        | Printer      | Emily Davis
-10       | Desk Lamp    | Emily Davis
+-----------------------------------------
+|sales_id | product_name | customer_name|
+|---------+--------------+---------------
+|3        | Laptop       | John Doe
+|1        | Phone        | John Doe
+|5        | Tablet       | Jane Smith
+|4        | Monitor      | Jane Smith
+|2        | Keyboard     | Jane Smith
+|7        | Mouse        | Michael Brown
+|8        | Headphones   | Michael Brown
+|6        | Webcam       | Michael Brown
+|9        | Printer      | Emily Davis
+|10       | Desk Lamp    | Emily Davis
+------------------------------------------
 ```
 2. List all products along with their customer's location, sorted by `location` then `product_name`.
    Output: Each row shows a product and the buyer's location, grouped by location and then alphabetically by product.
@@ -135,7 +137,7 @@ ORDER BY c.location, p.product_name;
 ```
 Output:
 ```
-| product\_name | location |
+| product_name | location |
 | ------------- | -------- |
 | Monitor       | Kisumu   |
 | Laptop        | Kisumu   |
@@ -159,7 +161,7 @@ ORDER BY p.price DESC;
 ```
 Output:
 ```
-| product\_name | price  | customer\_name |
+| product_name | price  | customer_name |
 | ------------- | ------ | -------------- |
 | Laptop        | 800.00 | Alice          |
 | Smartphone    | 600.00 | David          |
@@ -183,7 +185,7 @@ HAVING COUNT(DISTINCT p.product_id) > 2;
 ```
 Output:
 ```
-| customer\_name | product\_count |
+| customer_name | product_count |
 | -------------- | -------------- |
 | Alice          | 3              |
 | David          | 4              |
