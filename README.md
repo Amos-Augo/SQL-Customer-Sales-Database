@@ -1,8 +1,7 @@
-# SQL-Customer-Sales-Database
+# SQL Customer Sales Database Project
 This script demonstrates SQL operations such as sorting with ORDER BY and filtering grouped results using GROUP BY and HAVING. It uses sample product and customer data to show how to count related records and display only those meeting specific conditions (e.g., customers owning more than two products).
 
 ---
-# Customer Sales Database Project
 
 ## Overview
 This project contains an SQL script for creating and managing a simple customer sales database.  
