@@ -4,7 +4,6 @@ This script demonstrates SQL operations such as sorting with ORDER BY and filter
 ---
 
 ## Overview
-This project contains an SQL script for creating and managing a simple customer sales database.  
 The database consists of **three tables**:  
 - `customer_info` – Stores customer details  
 - `products` – Stores product details linked to customers  
