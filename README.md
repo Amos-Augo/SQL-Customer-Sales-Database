@@ -61,7 +61,7 @@ INSERT INTO products (product_id, product_name, price, customer_id) VALUES
 ```
 Insert customers:
 ```sql
-INSERT INTO customer_info (customer_id, full_name, location)
+INSERT INTO customer_info (customer_id, customer_name, location)
 VALUES
 (1, 'Alex Morgan', 'Evergreen'),
 (2, 'Taylor Brooks', 'Lakeside'),
