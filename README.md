@@ -13,23 +13,27 @@ The project also includes sample data insertion and several useful queries for r
 
 ---
 ## 1. Create Tables
-
+Create the products table:
 ```sql
--- Create the products table
 CREATE TABLE products (
     product_id INT PRIMARY KEY,
     product_name VARCHAR(50),
     price DECIMAL(10, 2),
-    customer_id INT
+    customer_id INT,
+    FOREIGN KEY (customer_id) REFERENCES customer_info(customer_id)
 );
+```
+Create the customers table:
 
--- Create the customers table
-CREATE TABLE customers (
+```sql
+CREATE TABLE customer_info (
     customer_id INT PRIMARY KEY,
-    customer_name VARCHAR(50)
+    customer_name VARCHAR(50),
+    location VARCHAR(50)
 );
-
---Create the sales table
+```
+Create the sales table:
+```sql
 CREATE TABLE sales(
    sales_id INT PRIMARY KEY,
    total_sales FLOAT,
@@ -40,30 +44,32 @@ CREATE TABLE sales(
 );
 ```
 ---
-## Database Schema
+## 2. Insert Data
 
-### 1. `customer_info`
-| Column       | Data Type      | Description                   |
-|--------------|---------------|-------------------------------|
-| customer_id  | INT (PK)      | Unique ID for each customer   |
-| full_name    | VARCHAR(50)   | Customer's full name          |
-| location     | VARCHAR(50)   | Customer's location           |
+Insert customers:
+```sql
+INSERT INTO customer_info (customer_id, full_name, location)
+VALUES
+(1, 'Alex Morgan', 'Evergreen'),
+(2, 'Taylor Brooks', 'Lakeside'),
+(3, 'Jordan Lee', 'Mapleton'),
+(4, 'Casey Bennett', 'Oakridge');
 
-### 2. `products`
-| Column       | Data Type      | Description                              |
-|--------------|---------------|------------------------------------------|
-| product_id   | INT (PK)      | Unique ID for each product               |
-| product_name | VARCHAR       | Name of the product                      |
-| price        | FLOAT         | Price of the product                     |
-| customer_id  | INT (FK)      | Links to `customer_info.customer_id`     |
-
-### 3. `sales`
-| Column       | Data Type      | Description                              |
-|--------------|---------------|------------------------------------------|
-| sales_id     | INT (PK)      | Unique ID for each sale                  |
-| total_sales  | FLOAT         | Total sale amount                        |
-| product_id   | INT (FK)      | Links to `products.product_id`           |
-| customer_id  | INT (FK)      | Links to `customer_info.customer_id`     |
+```
+Insert products:
+```sql
+INSERT INTO sales (sales_id, total_sales, product_id, customer_id) VALUES
+(1, 1200.00, 101, 1),  
+(2, 800.00, 102, 1),  
+(3, 600.00, 103, 2),   
+(4, 300.00, 104, 2),   
+(5, 50.00, 105, 2),   
+(6, 30.00, 106, 3),    
+(7, 150.00, 107, 3),  
+(8, 100.00, 108, 3),   
+(9, 200.00, 109, 4),   
+(10, 40.00, 110, 4); 
+```
 
 ---
 ## Script Overview
