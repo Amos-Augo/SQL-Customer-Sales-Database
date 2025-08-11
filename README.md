@@ -57,8 +57,6 @@ The SQL script provides answers to common business questions such as:
 5. **Combining all three tables to see customer, product, and sales details.**
 
 ---
-
-## Solutions
 # Sales Data Queries
 
 This script contains several SQL queries designed to analyze and retrieve information from a sales database.  
