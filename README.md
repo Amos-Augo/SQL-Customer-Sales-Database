@@ -98,18 +98,18 @@ For each query, comments explain what happens and the nature of the output.
 
 ## SQL Queries
 
-1. Show `sales_id`, `product_name`, and `full_name` for every sale, ordered by `total_sales` in descending order.
---    Output: Each row represents a sale, showing the product sold, the customer who bought it, and the sale amount ranking from highest to lowest.
+1. Show `sales_id`, `product_name`, and `customer_name` for every sale, ordered by `total_sales` in descending order.
+   Output: Each row represents a sale, showing the product sold, the customer who bought it, and the sale amount ranking from highest to lowest.
 
 ```sql
-SELECT s.sales_id, p.product_name, c.full_name
+SELECT s.sales_id, p.product_name, c.customer_name
 FROM sales s
 JOIN products p ON s.product_id = p.product_id
 JOIN customers c ON s.customer_id = c.customer_id
 ORDER BY s.total_sales DESC;
 ```
 2. List all products along with their customer's location, sorted by `location` then `product_name`.
---    Output: Each row shows a product and the buyer's location, grouped by location and then alphabetically by product.
+   Output: Each row shows a product and the buyer's location, grouped by location and then alphabetically by product.
 
 ```sql
 SELECT p.product_name, c.location
@@ -119,7 +119,7 @@ JOIN customers c ON s.customer_id = c.customer_id
 ORDER BY c.location, p.product_name;
 ```
 3. Display all sales with `product_name`, `price`, and `full_name`, ordered by `price` from highest to lowest.
---    Output: Shows each product sold, its price, and the buyer's name, sorted to highlight the most expensive sales first.
+   Output: Shows each product sold, its price, and the buyer's name, sorted to highlight the most expensive sales first.
 
 ```sql
 SELECT p.product_name, s.price, c.full_name
@@ -129,7 +129,7 @@ JOIN customers c ON s.customer_id = c.customer_id
 ORDER BY s.price DESC;
 ```
 4. Count how many products each customer owns, and only show customers with more than 2 products.
---    Output: Shows the customer name and how many unique products they have purchased, filtering to show only customers with 3 or more products.
+   Output: Shows the customer name and how many unique products they have purchased, filtering to show only customers with 3 or more products.
 
 ```sql
 SELECT c.full_name, COUNT(DISTINCT p.product_id) AS product_count
