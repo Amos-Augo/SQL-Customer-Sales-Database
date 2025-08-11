@@ -45,7 +45,20 @@ CREATE TABLE sales(
 ```
 ---
 ## 2. Insert Data
-
+Insert products:
+```sql
+INSERT INTO products (product_id, product_name, price, customer_id) VALUES
+(101, 'Laptop', 1200.00, 1),
+(102, 'Phone', 800.00, 1),
+(103, 'Tablet', 600.00, 2),
+(104, 'Monitor', 300.00, 2),
+(105, 'Keyboard', 50.00, 2),
+(106, 'Mouse', 30.00, 3),
+(107, 'Headphones', 150.00, 3),
+(108, 'Webcam', 100.00, 3),
+(109, 'Printer', 200.00, 4),
+(110, 'Desk Lamp', 40.00, 4);
+```
 Insert customers:
 ```sql
 INSERT INTO customer_info (customer_id, full_name, location)
@@ -56,7 +69,7 @@ VALUES
 (4, 'Casey Bennett', 'Oakridge');
 
 ```
-Insert products:
+Insert sales:
 ```sql
 INSERT INTO sales (sales_id, total_sales, product_id, customer_id) VALUES
 (1, 1200.00, 101, 1),  
@@ -72,7 +85,7 @@ INSERT INTO sales (sales_id, total_sales, product_id, customer_id) VALUES
 ```
 
 ---
-## Script Overview
+## Queries Overview
 The queries in this script:
 1. **Retrieve sales details with sorting by total sales**  
 2. **List products with customer locations**  
@@ -85,48 +98,46 @@ For each query, comments explain what happens and the nature of the output.
 
 ## SQL Script
 
+1. Show sales_id, product_name, and full_name for every sale, ordered by total_sales in descending order.
+--    Output: Each row represents a sale, showing the product sold, the customer who bought it, and the sale amount ranking from highest to lowest.
+
 ```sql
--- 1. Show sales_id, product_name, and full_name for every sale, 
---    ordered by total_sales in descending order.
---    Output: Each row represents a sale, showing the product sold,
---    the customer who bought it, and the sale amount ranking from highest to lowest.
 SELECT s.sales_id, p.product_name, c.full_name
 FROM sales s
 JOIN products p ON s.product_id = p.product_id
 JOIN customers c ON s.customer_id = c.customer_id
 ORDER BY s.total_sales DESC;
+```
+2. List all products along with their customer's location, sorted by location then product name.
+--    Output: Each row shows a product and the buyer's location, grouped by location and then alphabetically by product.
 
--- 2. List all products along with their customer's location,
---    sorted by location then product name.
---    Output: Each row shows a product and the buyer's location,
---    grouped by location and then alphabetically by product.
+```sql
 SELECT p.product_name, c.location
 FROM sales s
 JOIN products p ON s.product_id = p.product_id
 JOIN customers c ON s.customer_id = c.customer_id
 ORDER BY c.location, p.product_name;
+```
+3. Display all sales with product_name, price, and full_name, ordered by price from highest to lowest.
+--    Output: Shows each product sold, its price, and the buyer's name, sorted to highlight the most expensive sales first.
 
--- 3. Display all sales with product_name, price, and full_name,
---    ordered by price from highest to lowest.
---    Output: Shows each product sold, its price, and the buyer's name,
---    sorted to highlight the most expensive sales first.
+```sql
 SELECT p.product_name, s.price, c.full_name
 FROM sales s
 JOIN products p ON s.product_id = p.product_id
 JOIN customers c ON s.customer_id = c.customer_id
 ORDER BY s.price DESC;
+```
+4. Count how many products each customer owns, and only show customers with more than 2 products.
+--    Output: Shows the customer name and how many unique products they have purchased, filtering to show only customers with 3 or more products.
 
--- 4. Count how many products each customer owns,
---    and only show customers with more than 2 products.
---    Output: Shows the customer name and how many unique products
---    they have purchased, filtering to show only customers with 3 or more products.
+```sql
 SELECT c.full_name, COUNT(DISTINCT p.product_id) AS product_count
 FROM sales s
 JOIN products p ON s.product_id = p.product_id
 JOIN customers c ON s.customer_id = c.customer_id
 GROUP BY c.full_name
 HAVING COUNT(DISTINCT p.product_id) > 2;
-
 ```
 ---
 
