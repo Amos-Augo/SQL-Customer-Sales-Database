@@ -133,26 +133,61 @@ JOIN products p ON s.product_id = p.product_id
 JOIN customers c ON s.customer_id = c.customer_id
 ORDER BY c.location, p.product_name;
 ```
+Output:
+```
+| product\_name | location |
+| ------------- | -------- |
+| Monitor       | Kisumu   |
+| Laptop        | Kisumu   |
+| Tablet        | Mombasa  |
+| Laptop        | Nairobi  |
+| Mouse         | Nairobi  |
+| Keyboard      | Nairobi  |
+| Monitor       | Nairobi  |
+| Smartphone    | Nairobi  |
+| Monitor       | Nakuru   |
+```
 3. Display all sales with `product_name`, `price`, and `full_name`, ordered by `price` from highest to lowest.
    Output: Shows each product sold, its price, and the buyer's name, sorted to highlight the most expensive sales first.
 
 ```sql
-SELECT p.product_name, s.price, c.full_name
+SELECT p.product_name, p.price, c.customer_name
 FROM sales s
 JOIN products p ON s.product_id = p.product_id
 JOIN customers c ON s.customer_id = c.customer_id
-ORDER BY s.price DESC;
+ORDER BY p.price DESC;
+```
+Output:
+```
+| product\_name | price  | customer\_name |
+| ------------- | ------ | -------------- |
+| Laptop        | 800.00 | Alice          |
+| Smartphone    | 600.00 | David          |
+| Monitor       | 300.00 | Bob            |
+| Monitor       | 300.00 | Carol          |
+| Tablet        | 250.00 | Eve            |
+| Keyboard      | 100.00 | Frank          |
+| Mouse         | 50.00  | Grace          |
+
 ```
 4. Count how many products each customer owns, and only show customers with more than 2 products.
    Output: Shows the customer name and how many unique products they have purchased, filtering to show only customers with 3 or more products.
 
 ```sql
-SELECT c.full_name, COUNT(DISTINCT p.product_id) AS product_count
+SELECT c.customer_name, COUNT(DISTINCT p.product_id) AS product_count
 FROM sales s
 JOIN products p ON s.product_id = p.product_id
 JOIN customers c ON s.customer_id = c.customer_id
 GROUP BY c.full_name
 HAVING COUNT(DISTINCT p.product_id) > 2;
+```
+Output:
+```
+| customer\_name | product\_count |
+| -------------- | -------------- |
+| Alice          | 3              |
+| David          | 4              |
+
 ```
 ---
 
