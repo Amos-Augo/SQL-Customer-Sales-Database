@@ -35,8 +35,8 @@ CREATE TABLE sales(
    total_sales FLOAT,
    product_id INT,
    customer_id INT,
-   FOREIGN KEY (product_id) references products(product_id),
-   FOREIGN KEY (customer_id) references customer_info(customer_id)
+   FOREIGN KEY (product_id) REFERENCES products(product_id),
+   FOREIGN KEY (customer_id) REFERENCES customer_info(customer_id)
 );
 ```
 ---
