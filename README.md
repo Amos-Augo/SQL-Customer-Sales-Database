@@ -122,6 +122,7 @@ JOIN customers c ON s.customer_id = c.customer_id
 GROUP BY c.full_name
 HAVING COUNT(DISTINCT p.product_id) > 2;
 
+```
 ---
 
 ## How to Use
