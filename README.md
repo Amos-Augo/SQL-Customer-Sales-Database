@@ -31,12 +31,12 @@ CREATE TABLE customers (
 
 --Create the sales table
 CREATE TABLE sales(
-   sales_id int primary key,
-   total_sales float,
-   product_id int,
-   customer_id int,
-   foreign key (product_id) references products(product_id),
-   foreign key (customer_id) references customer_info(customer_id)
+   sales_id INT PRIMARY KEY,
+   total_sales FLOAT,
+   product_id INT,
+   customer_id INT,
+   FOREIGN KEY (product_id) references products(product_id),
+   FOREIGN KEY (customer_id) references customer_info(customer_id)
 );
 ```
 ---
