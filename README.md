@@ -110,7 +110,7 @@ ORDER BY s.total_sales DESC;
 ```
 Output:
 ```
------------------------------------------
+
 |sales_id | product_name | customer_name|
 |---------+--------------+---------------
 |3        | Laptop       | John Doe
@@ -123,7 +123,6 @@ Output:
 |6        | Webcam       | Michael Brown
 |9        | Printer      | Emily Davis
 |10       | Desk Lamp    | Emily Davis
-------------------------------------------
 ```
 2. List all products along with their customer's location, sorted by `location` then `product_name`.
    Output: Each row shows a product and the buyer's location, grouped by location and then alphabetically by product.
