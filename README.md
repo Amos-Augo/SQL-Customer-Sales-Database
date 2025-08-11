@@ -14,7 +14,34 @@ The database consists of **three tables**:
 The project also includes sample data insertion and several useful queries for reporting and analysis.
 
 ---
+## 1. Create Tables
 
+```sql
+-- Create the products table
+CREATE TABLE products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(50),
+    price DECIMAL(10, 2),
+    customer_id INT
+);
+
+-- Create the customers table
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(50)
+);
+
+--Create the sales table
+CREATE TABLE sales(
+   sales_id int primary key,
+   total_sales float,
+   product_id int,
+   customer_id int,
+   foreign key (product_id) references products(product_id),
+   foreign key (customer_id) references customer_info(customer_id)
+);
+```
+---
 ## Database Schema
 
 ### 1. `customer_info`
@@ -41,30 +68,6 @@ The project also includes sample data insertion and several useful queries for r
 | customer_id  | INT (FK)      | Links to `customer_info.customer_id`     |
 
 ---
-
-## Sample Data
-The script includes example data for customers, products, and sales to help you test queries.
-
----
-
-## Example Queries
-The SQL script provides answers to common business questions such as:
-
-1. **Which customers have made purchases and what products did they buy?**  
-2. **What is the total sales amount per customer?**  
-3. **Which product generated the highest total sales?**  
-4. **Are there any customers who haven't bought any products?**  
-5. **Combining all three tables to see customer, product, and sales details.**
-
----
-# Sales Data Queries
-
-This script contains several SQL queries designed to analyze and retrieve information from a sales database.  
-The database includes tables such as:
-- **sales**: Contains sales transactions, including `sales_id`, `product_id`, `customer_id`, `price`, and `total_sales`.
-- **products**: Contains product details such as `product_id` and `product_name`.
-- **customers**: Contains customer details such as `customer_id`, `full_name`, and `location`.
-
 ## Script Overview
 The queries in this script:
 1. **Retrieve sales details with sorting by total sales**  
