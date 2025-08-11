@@ -96,9 +96,9 @@ For each query, comments explain what happens and the nature of the output.
 
 ---
 
-## SQL Script
+## SQL Queries
 
-1. Show sales_id, product_name, and full_name for every sale, ordered by total_sales in descending order.
+1. Show `sales_id`, `product_name`, and `full_name` for every sale, ordered by `total_sales` in descending order.
 --    Output: Each row represents a sale, showing the product sold, the customer who bought it, and the sale amount ranking from highest to lowest.
 
 ```sql
@@ -108,7 +108,7 @@ JOIN products p ON s.product_id = p.product_id
 JOIN customers c ON s.customer_id = c.customer_id
 ORDER BY s.total_sales DESC;
 ```
-2. List all products along with their customer's location, sorted by location then product name.
+2. List all products along with their customer's location, sorted by `location` then `product_name`.
 --    Output: Each row shows a product and the buyer's location, grouped by location and then alphabetically by product.
 
 ```sql
@@ -118,7 +118,7 @@ JOIN products p ON s.product_id = p.product_id
 JOIN customers c ON s.customer_id = c.customer_id
 ORDER BY c.location, p.product_name;
 ```
-3. Display all sales with product_name, price, and full_name, ordered by price from highest to lowest.
+3. Display all sales with `product_name`, `price`, and `full_name`, ordered by `price` from highest to lowest.
 --    Output: Shows each product sold, its price, and the buyer's name, sorted to highlight the most expensive sales first.
 
 ```sql
